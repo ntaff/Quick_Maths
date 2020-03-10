@@ -11,9 +11,9 @@ def fermat_witness(n):
 def test_miller_rabin(n,k):
 	for i in range(k):
 		a = random.randint(2,n-2)
-			if pow(a, n-1, n)!=1:
-				return False
-		return True
+		if pow(a, n-1, n)!=1:
+			return False
+	return True
     
 #Find a prime number in a given range (a --> b)
 def prime_in_range(a,b):
