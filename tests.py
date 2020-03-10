@@ -4,7 +4,7 @@ import unittest
 
 class testPrimality(unittest.TestCase):
 
-    """Tests cases utilisés pour tester les fonctions des challenges du chapitre 'Guest'."""
+    """Tests cases utilisés pour tester les fonctions du fichier 'Primality.py'."""
 
     def test_fermat_witness(self):
         """Test le fonctionnement de la fonction 'fermat_witness'."""
