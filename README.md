@@ -1,5 +1,7 @@
 # Quick_Maths
 
+[![Build Status](https://travis-ci.com/ntaff/Quick_Maths.svg?branch=master)](https://travis-ci.com/ntaff/Quick_Maths)[![codecov](https://codecov.io/gh/ntaff/Quick_Maths/branch/master/graph/badge.svg)](https://codecov.io/gh/ntaff/Quick_Maths)
+
 This repository contain some mathematicals implementations : 
 
 The repo now contain the following dir/files :
