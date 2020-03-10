@@ -1,3 +1,6 @@
+from math import pow
+import random
+
 #Check if n is a composite, if yes, then return a fermat_witness
 def fermat_witness(n):
 	for a in range(2,n-2):
