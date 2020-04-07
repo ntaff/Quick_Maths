@@ -54,7 +54,7 @@ def prime_in_range(a,b):
 		if miller_rabin_primtest(i,32):
 			return i
 		
-#Returns a prime number that can be stored in 'nbits' bits.
+#Generate a prime number that can be stored in 'nbits' bits.
 def getprime(nbits):
 	assert nbits > 3
 	while True:
