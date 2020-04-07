@@ -9,7 +9,12 @@ def bit_size(num):
 def bytes2int(raw_bytes):
     return int(binascii.hexlify(raw_bytes), 16)
 
-# Return a seq of 'nbits' random bits
+# Generate a random odd integer of approximately nbits bits.
+def read_random_odd_int(nbits):
+    value = read_random_int(nbits)
+    return value | 1
+
+# Generate a seq of 'nbits' random bits
 def read_random_bits(nbits):
     nbytes, rbits = divmod(nbits, 8)
     randomdata = os.urandom(nbytes)
@@ -19,14 +24,14 @@ def read_random_bits(nbits):
         randomdata = byte(randomvalue) + randomdata
     return randomdata
 
-# Return a random integer of approximately 'nbits' bits.
+# Generate a random integer of approximately 'nbits' bits.
 def read_random_int(nbits):
     randomdata = read_random_bits(nbits)
     value = bytes2int(randomdata)
     value |= 1 << (nbits - 1)
     return value
 
-# Return a random integer 'x' with 1 <= x <= 'maxvalue'
+# Generate a random integer 'x' with 1 <= x <= 'maxvalue'
 def randint(maxvalue):
     bit_size = bit_size(maxvalue)
     tries = 0
