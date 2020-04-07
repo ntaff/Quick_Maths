@@ -1,6 +1,6 @@
 from math import pow
 import random
-from lib import *
+from lib.primlib import *
 
 #Returns the greatest common divisor of p and q
 def gcd(p, q):
