@@ -8,7 +8,7 @@ def gcd(p, q):
 		(p, q) = (q, p % q)
 	return p
 
-#Check if n is a composite, if yes, then return a fermat_witness
+#Check if n is a composite, if yes, then return a witness
 def fermat_witness(n):
 	for a in range(2,n-2):
 		if pow(a, n-1, n) != 1:
