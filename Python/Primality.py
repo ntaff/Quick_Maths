@@ -80,6 +80,14 @@ def safe_prime(a,b):
 			p = 12*qs + 11
 			if miller_rabin_primtest(p, 2):
 				return p
+			
+# Return true if n is a circular prime (prime where all rotations of the digits are themselves prime)
+def isCircularPrime(n):
+	n1 = str(n)*2
+	for i in range(len(str(n))):
+		if not is_prime(int(n1[i:len(str(n))+i])):
+			return False
+	return True
 
 # Yields the sequence of prime numbers via the Sieve of Eratosthene
 def eratosthene():
