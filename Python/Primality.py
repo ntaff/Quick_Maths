@@ -1,6 +1,7 @@
 from math import pow
 import random
 from lib.primlib import *
+from itertools import takewhile
 
 #Returns the greatest common divisor of p and q
 def gcd(p, q):
@@ -39,7 +40,7 @@ def miller_rabin_primtest(n, k):
 			return False
 	return True
 
-# CHeck if 'number' is prime
+# Check if 'number' is prime
 def is_prime(number):
 	if number < 10:
 		return number in {2, 3, 5, 7}
@@ -79,4 +80,21 @@ def safe_prime(a,b):
 			p = 12*qs + 11
 			if miller_rabin_primtest(p, 2):
 				return p
-   
+
+# Yields the sequence of prime numbers via the Sieve of Eratosthene
+def eratosthene():
+	D = {}
+	q = 2
+	while 1:
+		if q not in D:
+			yield q
+			D[q*q] = [q]
+		else:
+			for p in D[q]:
+				D.setdefault(p+q,[]).append(p)
+			del D[q]
+		q += 1
+
+# Return the sum of the first n primes
+def sumPrimes(n):
+	return(sum(takewhile(lambda x: x < n, eratosthene())))
