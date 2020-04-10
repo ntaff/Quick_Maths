@@ -25,6 +25,11 @@ The repo now contain the following dir/files :
    - `extd_pgcd(a, b)` Compute extended gcd of two integers (Extended Euclidean algorithm)
    - `linear_congruence(a, b, n)` Resolve linear congruence equations
 
+
+### Caml
+1. `Primality.ml`: Contains primality stuff
+   
+   
 ### Elixir
 1. `Primality.exs`: Contains primality stuff
    - `PrimeFinder` Return the n-th prime number
