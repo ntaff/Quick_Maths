@@ -91,17 +91,20 @@ def isCircularPrime(n):
 
 # Yields the sequence of prime numbers via the Sieve of Eratosthene
 def eratosthene():
+	yield 2
 	D = {}
-	q = 2
-	while 1:
-		if q not in D:
-			yield q
-			D[q*q] = [q]
+	q = 3
+	while True:
+		two_p = D.pop(q, None)
+		if two_p:
+			x = q + two_p
+			while x in D:
+				x += two_p
+			D[x] = two_p       
 		else:
-			for p in D[q]:
-				D.setdefault(p+q,[]).append(p)
-			del D[q]
-		q += 1
+			D[q*q] = 2*q     
+			yield q
+		q += 2
 
 # Return the sum of the first n primes
 def sumPrimes(n):
