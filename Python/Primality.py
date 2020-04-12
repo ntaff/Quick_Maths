@@ -63,7 +63,7 @@ def getprime(nbits):
 		if is_prime(integer):
 			return integer
 
-#Find a safe prime number in a given range [a; b[
+#Find a safe prime number in the given range [a; b[
 def safe_prime(a,b):
 	i = 0
 	while True:    
