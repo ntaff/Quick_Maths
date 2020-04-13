@@ -1,13 +1,8 @@
 from math import pow
 import random
 from lib.primlib import *
+from arithmetic import *
 from itertools import takewhile
-
-#Returns the greatest common divisor of p and q
-def gcd(p, q):
-	while q != 0:
-		(p, q) = (q, p % q)
-	return p
 
 #Check if n is a composite, if yes, then return a witness
 def fermat_witness(n):
