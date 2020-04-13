@@ -1,3 +1,9 @@
+#Returns the greatest common divisor of p and q
+def gcd(p, q):
+	while q != 0:
+		(p, q) = (q, p % q)
+	return p
+
 #Compute extended gcd of two integers (Extended Euclidean algorithm)
 def extd_pgcd(a, b):
 	r, r2 = a, b 
