@@ -1,7 +1,7 @@
 from math import pow
 import random
 from lib.primlib import *
-from arithmetic import *
+import arithmetic
 from itertools import takewhile
 
 #Check if n is a composite, if yes, then return a witness
@@ -104,3 +104,19 @@ def eratosthene():
 # Return the sum of the first n primes
 def sumPrimes(n):
 	return(sum(takewhile(lambda x: x < n, eratosthene())))
+
+#Crack a RSA private key if one of n factor is > 1e9
+def rsa_attack_small_primes(pathpubkey, outputname):
+	public_key = RSA.importKey(open(pathpubkey, 'r').read())
+	n, e = public_key.n, public_key.e
+	def factorprime(an):
+		return n%an == 0
+	for i in filter(factorprime, takewhile(lambda x: x < 1e9, eratosthene())):q=i
+	p = n//q
+	phi = (p -1)*(q-1)
+	d = arithmetic.modinv(e,phi)
+	private_key = RSA.construct((n, e, d))
+	privkey = private_key.exportKey('PEM').decode()
+	pkey= open(outputname,"w")
+	pkey.write(privkey)
+	pkey.close()
