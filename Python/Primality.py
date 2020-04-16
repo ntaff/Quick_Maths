@@ -120,3 +120,34 @@ def rsa_attack_small_primes(pathpubkey, outputname):
 	pkey= open(outputname,"w")
 	pkey.write(privkey)
 	pkey.close()
+
+#Crack a RSA private key if one of n factor is > 1e14
+def rsa_pollard_attack(pathpubkey, outputname): 
+	def PollardRho(n): 
+		if (n == 1): 
+			return n   
+		if (n % 2 == 0): 
+			return 2 
+		x = (random.randint(0, 2) % (n - 2)) 
+		y = x  
+		c = 1 
+		d = 1 
+		while (d == 1):  
+			x = (pow(x, 2, n) + c + n)%n  
+			y = (pow(y, 2, n) + c + n)%n 
+			y = (pow(y, 2, n) + c + n)%n 
+			d = math.gcd(abs(x - y), n) 
+			if (d == n): 
+				return PollardRho(n)   
+		return d 
+	public_key = RSA.importKey(open(pathpubkey, 'r').read())
+	n, e = public_key.n, public_key.e
+	q = PollardRho(n)
+	p = n//q
+	phi = (p -1)*(q-1)
+	d = arithmetic.modinv(e,phi)
+	private_key = RSA.construct((n, e, d))
+	privkey = private_key.exportKey('PEM').decode()
+	pkey= open(outputname,"w")
+	pkey.write(privkey)
+	pkey.close()
