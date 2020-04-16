@@ -4,7 +4,7 @@ def gcd(p, q):
 		(p, q) = (q, p % q)
 	return p
 
-#Compute extended gcd of two integers (Extended Euclidean algorithm)
+#Compute extended gcd of two integers (Extended Euclidean algorithm) v1
 def extd_pgcd(a, b):
 	r, r2 = a, b 
 	u = v2 = 1
@@ -16,7 +16,23 @@ def extd_pgcd(a, b):
 		r2, u2, v2 = (rs - q*r2), (us - q*u2), (vs - q*v2)
 	return u
 
+#Compute extended gcd of two integers (Extended Euclidean algorithm) v2
+def egcd(a, b):
+	if a == 0:
+		return (b, 0, 1)
+	else:
+		g, y, x = egcd(b % a, a)
+	return (g, x - (b // a) * y, y)
+
 #Resolve linear congruence equations
 def linear_congruence(a, b, n):
 	c = extd_pgcd(a, n)
 	return ((c * (-b%n)) % n)
+
+#Return inverse modular
+def modinv(a, m):
+		gcd, x, y = egcd(a, m)
+		if gcd != 1:
+			return None 
+		else:
+			return x % m
