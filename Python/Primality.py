@@ -105,7 +105,7 @@ def eratosthene():
 def sumPrimes(n):
 	return(sum(takewhile(lambda x: x < n, eratosthene())))
 
-#Crack a RSA private key if one of n factor is > 1e9
+#Crack a RSA private key if one of n factor is < 1e9
 def rsa_attack_small_primes(pathpubkey, outputname):
 	public_key = RSA.importKey(open(pathpubkey, 'r').read())
 	n, e = public_key.n, public_key.e
@@ -121,7 +121,7 @@ def rsa_attack_small_primes(pathpubkey, outputname):
 	pkey.write(privkey)
 	pkey.close()
 
-#Crack a RSA private key if one of n factor is > 1e14
+#Crack a RSA private key if one of n factor is < 1e14
 def rsa_pollard_attack(pathpubkey, outputname): 
 	def PollardRho(n): 
 		if (n == 1): 
