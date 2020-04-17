@@ -36,3 +36,19 @@ def modinv(a, m):
 			return None 
 		else:
 			return x % m
+
+# Return the nth-digit Fibonacci number	
+def fib(n):
+	a, b = 1, 1
+	term = 1
+	while len(str(a)) < n:
+		term += 1
+		a, b = b, a + b
+	return term
+
+# Return the nth-digit Fibonacci number	(recursive way)
+def recfibo(n):  
+	if n <= 1:  
+		return n  
+	else:  
+		return(recur_fibo(n-1) + recur_fibo(n-2))
