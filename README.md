@@ -19,15 +19,23 @@ The repo now contain the following dir/files :
    - `eratosthene()` Yields the sequence of prime numbers via the Sieve of Eratosthene
    - `sumPrimes(n)` Return the sum of the first n primes
    - `isCircularPrime(n)` Return true if n is a circular prime
+   - `rsa_attack_small_primes(pathpubkey, outputname)` Crack a RSA private key if one of n factor is < 1e9
+   - `rsa_pollard_attack(pathpubkey, outputname)` Crack a RSA private key if one of n factor is < 1e14
    
 2. `Arithmetic.py.py`: Contains arithmetic stuff
    - `gcd(p, q)` Return the greatest common divisor of p and q
    - `extd_pgcd(a, b)` Compute extended gcd of two integers (Extended Euclidean algorithm)
    - `linear_congruence(a, b, n)` Resolve linear congruence equations
+   - `fib(n)` Return the nth-digit Fibonacci number
+   - `recfibo` Return the nth-digit Fibonacci number	(recursive way)
 
 
 ### Caml
 1. `Primality.ml`: Contains primality stuff
+
+
+### C
+1. `Primality.c`: Contains primality stuff
    
    
 ### Elixir
