@@ -27,7 +27,7 @@ The repo now contain the following dir/files :
    - `extd_pgcd(a, b)` Compute extended gcd of two integers (Extended Euclidean algorithm)
    - `linear_congruence(a, b, n)` Resolve linear congruence equations
    - `fib(n)` Return the nth-digit Fibonacci number
-   - `recfibo` Return the nth-digit Fibonacci number	(recursive way)
+   - `recfibo(n)` Return the nth-digit Fibonacci number	(recursive way)
 
 
 ### Caml
