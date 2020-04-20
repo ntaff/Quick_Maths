@@ -40,7 +40,7 @@ The repo now contain the following dir/files :
    
 ### Elixir
 1. `Primality.exs`: Contains primality stuff
-   - `PrimeFinder` Return the n-th prime number
+   - `PrimeFinder(n)` Return the n-th prime number
 
 2. `Number.exs`: Contains primality stuff
-   - `pandigital_product` Sum all products whose multiplicand/multiplier/product identity can be written as a 1...9 pandigital.
+   - `pandigital_product()` Sum all products whose multiplicand/multiplier/product identity can be written as a 1...9 pandigital.
