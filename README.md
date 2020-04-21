@@ -44,3 +44,12 @@ The repo now contain the following dir/files :
 
 2. `Number.exs`: Contains primality stuff
    - `pandigital_product()` Sum all products whose multiplicand/multiplier/product identity can be written as a 1...9 pandigital.
+   
+   
+   
+   
+   
+   
+   
+   
+   TODO : Add links lol
