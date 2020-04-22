@@ -52,3 +52,14 @@ def recfibo(n):
 		return n  
 	else:  
 		return(recur_fibo(n-1) + recur_fibo(n-2))
+
+# Return the nth-digit Fibonacci number	(iterator's way)
+def fiboyield(n):
+    a, b = 1, 1
+    while b <= n:
+        a, b = b, a + b
+        yield a
+
+# Return the sum of the nth-first even Fibonacci numbers
+def sum_fibo_even(n):
+    return sum(i for i in fib_generator(n) if not i % 2)
