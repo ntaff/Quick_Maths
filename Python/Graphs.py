@@ -14,7 +14,6 @@ def nbArcs(G):
 def ajoutArc(G,i,j):
     G[i].append(j)
     
-
 def enleveArc(G,i,j):
     G[i].remove(j)
            
