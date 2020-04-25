@@ -105,6 +105,15 @@ def eratosthene():
 def sumPrimes(n):
 	return(sum(takewhile(lambda x: x < n, eratosthene())))
 
+# Return the smallest prime larger than n.
+def next_prime(n):
+	if n < 2:
+		return 2
+		result = (n + 1) | 1
+	while not is_prime(result):
+		result = result + 2
+	return result
+
 #Crack a RSA private key if one of n factor is < 1e9
 def rsa_attack_small_primes(pathpubkey, outputname):
 	public_key = RSA.importKey(open(pathpubkey, 'r').read())
