@@ -37,6 +37,13 @@ def modinv(a, m):
 		else:
 			return x % m
 
+# Return if n is a quatratic residue of q
+def is_quadratic_residue(q, n):
+    for i in range(1, q):
+        if (i**2 % q) == (n % q):
+            return True
+    return False
+
 # Return the nth-digit Fibonacci number	
 def fib(n):
 	a, b = 1, 1
