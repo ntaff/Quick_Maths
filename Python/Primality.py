@@ -114,6 +114,25 @@ def next_prime(n):
 		result = result + 2
 	return result
 
+# Chinese reminder theorem
+def crt(primes, values):
+	N = 1
+	for q in primes: 
+		N *= q 
+	i = 0
+	by = []
+	while i < k:
+		n_i = N//primes[i] 
+		(gcd, r_i, s_i) = egcd(primes[i], n_i) 
+		by.append(s_i*n_i) 
+		i += 1
+	res = 0
+	i = 0
+	while i < k: 
+		res += values[i]*by[i]
+		i += 1
+	return res % N
+
 #Crack a RSA private key if one of n factor is < 1e9
 def rsa_attack_small_primes(pathpubkey, outputname):
 	public_key = RSA.importKey(open(pathpubkey, 'r').read())
