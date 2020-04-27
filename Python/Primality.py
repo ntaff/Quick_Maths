@@ -3,6 +3,7 @@ import random
 from lib.primlib import *
 import arithmetic
 from itertools import takewhile
+from functools import reduce
 
 #Check if n is a composite, if yes, then return a witness
 def fermat_witness(n):
@@ -115,16 +116,13 @@ def next_prime(n):
 	return result
 
 # Chinese remainder theorem
-def crt(items):
-	N = 1
-	for a, n in items:
-		N *= n
-	result = 0
-	for a, n in items:
-		m = N//n
-		r, s, d = egcd(n, m)
-		result += a*s*m
-	return result % N
+def chinese_remainder(n, a):
+    sum = 0
+    prod = reduce(lambda a, b: a*b, n)
+    for n_i, a_i in zip(n, a):
+        p = prod // n_i
+        sum += a_i * modinv(p, n_i) * p
+    return sum % prod
 
 #Crack a RSA private key if one of n factor is < 1e9
 def rsa_attack_small_primes(pathpubkey, outputname):
