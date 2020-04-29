@@ -18,6 +18,7 @@ The repo now contain the following dir/files :
    - `safe_prime(a,b)` Find a safe prime number in a given range [a; b[
    - `eratosthene()` Yields the sequence of prime numbers via the Sieve of Eratosthene
    - `sumPrimes(n)` Return the sum of the first n primes
+   - `chinese_remainder(n, a)` : Chinese remainder theorem
    - `isCircularPrime(n)` Return true if n is a circular prime
    - `rsa_attack_small_primes(pathpubkey, outputname)` Crack a RSA private key if one of n factor is < 1e9
    - `rsa_pollard_attack(pathpubkey, outputname)` Crack a RSA private key if one of n factor is < 1e14
