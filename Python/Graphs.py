@@ -155,3 +155,77 @@ def sousG(G,i):
     while H[i]!=[]:
         H[i].pop()
     return H
+
+##############################
+#### Breadth First Search ####
+##############################
+
+# Breadth First Search implementation starting at a specicied node (i)
+def largeur(G, i):
+    Visite = Vector.initVect(len(G), False) 
+    File = [i] 
+    ordreVisite = [] 
+    Visite[i] = True  
+    while len(File) != 0: 
+        x = File[0] 
+        File.pop(0)
+        ordreVisite.append(x) 
+        for succ in G[x]:
+            if Visite[succ] == False: 
+                Visite[succ] = True
+                File.append(succ)
+    return ordreVisite
+
+# Generalized Breadth First Search implementation
+def largeurG(G):
+    Visite = Vector.initVect(len(G), 0)
+    ordreVisite = []
+    File = []
+    for i in range(1, len(G)):
+        if Visite[i] == 0:
+            ordreSousVisite = []
+            File.append(i)
+            Visite[i] = 1
+            while File:
+                y = File.pop(0)
+                ordreSousVisite.append(y)
+                for z in G[y]:
+                    if Visite[z] == 0:
+                        Visite[z] = 1
+                        File.append(z)
+                        else:
+                        pass
+            ordreVisite.append(ordreSousVisite)
+    return ordreVisite
+
+############################
+#### Depth First Search ####
+############################
+
+# Depth First Search recursive auxiliary function starting from a specified node (i)
+def profRec(G, i, Visite, ordreVisite):
+    Visite[i] = 1
+    ordreVisite.append(i)  
+    for y in G[i]:
+        if Visite[y] == 0:
+            profRec(G, y, Visite, ordreVisite)
+        else:
+            pass
+
+# Depth First Search implementation starting at a specicied node (i)
+def profond(G, i):
+    Visite = Vector.initVect(len(G), 0)
+    ordreVisite = []
+    profRec(G, i, Visite, ordreVisite)
+    return ordreVisite
+
+# Generalized Depth First Search implementation
+def profondG(G):
+    Visite = Vector.initVect(len(G), 0)
+    ordreVisite = []
+    for i in range(1, len(G)):
+        if Visite[i] == 0:
+            ordreSousVisite = []
+            profRec(G, i, Visite, ordreVisiteRec)
+            ordreVisite.append(ordreVisiteRec)
+    return ordreVisite
