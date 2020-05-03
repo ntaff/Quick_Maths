@@ -229,3 +229,95 @@ def profondG(G):
             profRec(G, i, Visite, ordreVisiteRec)
             ordreVisite.append(ordreVisiteRec)
     return ordreVisite
+
+
+####################################################
+#### Search applications on Non-Oriented graphs ####
+####################################################
+
+ # G is connexe only if generalized DFS return only one connexe component
+def isConnexe(G):
+    return len(profondG(G)) == 1
+
+def cyclicRec(G, pere, visite, cycle):
+    if cycle[0]: 
+        return 
+    visite[pere] = True  
+    for voisin in G[pere]:
+        if visite[voisin] and voisin != pere: 
+            cycle[0] = True 
+            return
+        if not visite[voisin]:
+            cyclicRec(G, voisin, visite, cycle) 
+        else:
+            pass
+        
+def is_cyclic(G):
+    visite = Vector.initVect(len(G), False) 
+    cyclic = [False]
+    for y in range(0, len(G)):
+        if not visite[y]: 
+            cyclicRec(G, y, visite, cyclic)
+        if cyclic[0]: 
+            break 
+    return cyclic[0]
+
+#G is a tree if he's connexe but not cyclic.
+def isArbre(G):
+    return isConnexe(G) and not is_cyclic(G) 
+
+#Return the shortest paths between i and the other nodes
+def plusCourtChemin(G, i):
+    Visite = initVect(len(G), 0) 
+    Pere = initVect(len(G), 0) 
+    Distance = initVect(len(G),-1)
+    Distance[i] = 0
+    Pere[i] = i 
+    File = [i] 
+    Visite[i]=1 
+    while len(File) != 0:
+        y = File.pop(0) 
+        for z in G[y]: 
+            if Visite[z] == 0: 
+                Visite[z] = 1
+                File.append(z) 
+                Distance[z] = Distance[y]+1 
+                Pere[z]=y 
+            else:
+                pass
+    return Distance, Pere
+
+# Return if g is bipartite graph
+def is_biparti(G):
+    X=[]
+    Y=[]
+    Visite=Vector.initVect(len(G),0)
+    File=[]
+    for i in range(1,len(G)):
+        if Visite[i]==0:
+            Visite[i]=1
+            File.append(i)
+            X.append(i)
+            while len(File)!=0:
+                 y=File.pop()
+                 for z in G[y]:
+                     if Visite[z]==0:
+                         File.append(z)
+                         if Visite[y]==1:
+                             Visite[z]=2
+                             Y.append(z)
+                         else:
+                             Visite[z]=1
+                             X.append(z)
+                     else:
+                        if Visite[z]==Visite[y]:
+                            return False
+    return True,X,Y
+
+#Return the number of nodes in i's connexe component, with 
+def TCC(G,i):
+    Visite = Vector.initVect(len(G), 0)
+    ordreVisite = []
+    prof = Vector.initVect(len(G), 0)
+    profRec(G, i, Visite, ordreVisite, prof)
+    return len(ordreVisite)
