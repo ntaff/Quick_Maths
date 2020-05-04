@@ -239,6 +239,7 @@ def profondG(G):
 def isConnexe(G):
     return len(profondG(G)) == 1
 
+# is_cyclic() func
 def cyclicRec(G, pere, visite, cycle):
     if cycle[0]: 
         return 
@@ -251,7 +252,8 @@ def cyclicRec(G, pere, visite, cycle):
             cyclicRec(G, voisin, visite, cycle) 
         else:
             pass
-        
+    
+# Return true if G is cyclic
 def is_cyclic(G):
     visite = Vector.initVect(len(G), False) 
     cyclic = [False]
