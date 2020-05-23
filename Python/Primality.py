@@ -115,15 +115,6 @@ def next_prime(n):
 		result = result + 2
 	return result
 
-# Chinese remainder theorem
-def chinese_remainder(n, a):
-    sum = 0
-    prod = reduce(lambda a, b: a*b, n)
-    for n_i, a_i in zip(n, a):
-        p = prod // n_i
-        sum += a_i * modinv(p, n_i) * p
-    return sum % prod
-
 #Crack a RSA private key if one of n factor is < 1e9
 def rsa_attack_small_primes(pathpubkey, outputname):
 	public_key = RSA.importKey(open(pathpubkey, 'r').read())
