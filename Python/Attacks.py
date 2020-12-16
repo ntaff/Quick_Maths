@@ -2,6 +2,11 @@ import hashlib
 import string
 import random
 import time
+from math import pow
+from lib.primlib import *
+import arithmetic
+from itertools import takewhile
+from functools import reduce
 
 # Find collisions faster than the usual comparison method with the birthday paradox
 # Parameter `bit_range` is the number of bits you want to collide
